@@ -1,0 +1,22 @@
+{
+    "type":"minecraft:crafting_shaped",
+    "pattern":[
+        "IGI",
+        "RG ",
+        "IGI"
+    ],
+    "key":{
+        "I":{
+            "item":"minecraft:iron_ingot"
+        },
+        "R":{
+            "item":"minecraft:redstone"
+        },
+        "G":{
+            "item":"minecraft:glowstone_dust"
+        }
+    },
+    "result":{
+        "item": "fluorescence:bar_light_covered"
+    }
+}

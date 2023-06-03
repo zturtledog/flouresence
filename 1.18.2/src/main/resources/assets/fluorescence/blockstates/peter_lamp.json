@@ -1,0 +1,21 @@
+{
+    "variants":{
+        "facing=south": { 
+            "model": "fluorescence:block/peter_lamp",
+            "y":90
+        },
+        "facing=north": { 
+            "model": "fluorescence:block/peter_lamp",
+            "y":90
+        },
+
+        "facing=west": { 
+            "model": "fluorescence:block/peter_lamp",
+            "y":180
+        },
+        "facing=east": { 
+            "model": "fluorescence:block/peter_lamp",
+            "y":180
+        }
+    }
+}

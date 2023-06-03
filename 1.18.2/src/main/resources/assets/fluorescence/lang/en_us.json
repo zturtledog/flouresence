@@ -1,0 +1,10 @@
+{
+    "itemGroup.Fluorescence":"Fluorescence",
+    
+    "block.fluorescence.tiled_light":"Tiled Light",
+    "block.fluorescence.peter_lamp":"Peter Lamp",
+    "block.fluorescence.drip_light":"Drip Light",
+    "block.fluorescence.pendant_light":"Pendant Light",
+    "block.fluorescence.bar_light":"Bar Light",
+    "block.fluorescence.bar_light_covered":"Bar Light Covered"
+}

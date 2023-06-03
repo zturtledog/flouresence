@@ -1,0 +1,22 @@
+{
+    "type":"minecraft:crafting_shaped",
+    "pattern":[
+        "IGI",
+        "GRG",
+        "IGI"
+    ],
+    "key":{
+        "R":{
+            "item":"minecraft:redstone"
+        },
+        "I":{
+            "item":"minecraft:iron_ingot"
+        },
+        "G":{
+            "item":"minecraft:glowstone_dust"
+        }
+    },
+    "result":{
+        "item": "fluorescence:tiled_light"
+    }
+}

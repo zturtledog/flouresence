@@ -1,0 +1,19 @@
+{
+    "variants":{
+        "facing=south": { 
+            "model": "fluorescence:block/bar_light_covered"
+        },
+        "facing=north": { 
+            "model": "fluorescence:block/bar_light_covered"
+        },
+
+        "facing=west": { 
+            "model": "fluorescence:block/bar_light_covered",
+            "y":270
+        },
+        "facing=east": { 
+            "model": "fluorescence:block/bar_light_covered",
+            "y":270
+        }
+    }
+}
