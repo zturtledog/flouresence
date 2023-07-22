@@ -1,0 +1,9 @@
+{
+    "parent":"fluorescence:block/fence_topper/fence_topper",
+    "textures": {
+		"2": "fluorescence:block/topper_arm",
+		"3": "fluorescence:block/topper_arm",
+		"5": "fluorescence:block/topper_arm",
+		"6": "fluorescence:block/blank"
+	}
+}

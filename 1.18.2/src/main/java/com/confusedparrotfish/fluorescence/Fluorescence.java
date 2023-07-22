@@ -2,6 +2,8 @@ package com.confusedparrotfish.fluorescence;
 
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
@@ -11,6 +13,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,18 +38,19 @@ public class Fluorescence {
 
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(blockregistry.TILED_LIGHT_PURPLE.get().asItem());
+            return new ItemStack(blockregistry.DRIP_LIGHT.get().asItem());
         }
 
         public ItemStack getIconItem() {
-            return new ItemStack(blockregistry.TILED_LIGHT_PURPLE.get().asItem());
+            return new ItemStack(blockregistry.DRIP_LIGHT.get().asItem());
         };
     };
 
     public Fluorescence() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::commonSetup);        
+        modEventBus.addListener(this::clientsetup);
 
         blockregistry.register(modEventBus);
         itemregistry.register(modEventBus);
@@ -55,6 +59,10 @@ public class Fluorescence {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {}
+
+    private void clientsetup(final FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(blockregistry.TOPPER.get(), RenderType.cutout());
+    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent

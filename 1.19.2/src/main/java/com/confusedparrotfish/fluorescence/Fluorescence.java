@@ -4,6 +4,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,7 +26,7 @@ public class Fluorescence {
     public static CreativeModeTab fluorescencetab = new CreativeModeTab("Fluorescence") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(blockregistry.TILED_LIGHT_PURPLE.get().asItem());
+            return new ItemStack(blockregistry.TILED_LIGHT.get().asItem());
         }
     };
 

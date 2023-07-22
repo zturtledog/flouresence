@@ -1,0 +1,21 @@
+{
+    "variants":{
+        "":{"model": "fluorescence:block/fence_topper/fence_topper"},
+        "nbrs=0 ":{"model": "fluorescence:block/fence_topper"},
+        "nbrs=1 ":{"model": "fluorescence:block/fence_topper/0001"},
+        "nbrs=2 ":{"model": "fluorescence:block/fence_topper/0010"},
+        "nbrs=3 ":{"model": "fluorescence:block/fence_topper/0011"},
+        "nbrs=4 ":{"model": "fluorescence:block/fence_topper/0100"},
+        "nbrs=5 ":{"model": "fluorescence:block/fence_topper/0101"},
+        "nbrs=6 ":{"model": "fluorescence:block/fence_topper/0110"},
+        "nbrs=7 ":{"model": "fluorescence:block/fence_topper/0111"},
+        "nbrs=8 ":{"model": "fluorescence:block/fence_topper/1000"},
+        "nbrs=9 ":{"model": "fluorescence:block/fence_topper/1001"},
+        "nbrs=10":{"model": "fluorescence:block/fence_topper/1010"},
+        "nbrs=11":{"model": "fluorescence:block/fence_topper/1011"},
+        "nbrs=12":{"model": "fluorescence:block/fence_topper/1100"},
+        "nbrs=13":{"model": "fluorescence:block/fence_topper/1101"},
+        "nbrs=14":{"model": "fluorescence:block/fence_topper/1110"},
+        "nbrs=15":{"model": "fluorescence:block/fence_topper/1111"}
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type":"minecraft:crafting_shaped",
+    "pattern":[
+        "NIN",
+        "ICI",
+        "NIN"
+    ],
+    "key":{
+        "I":{
+            "item":"minecraft:iron_ingot"
+        },
+        "C":{
+            "item":"minecraft:copper_ingot"
+        },
+        "N":{
+            "item":"minecraft:iron_nugget"
+        }
+    },
+    "result":{
+        "item": "fluorescence:fence_topper"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "variants":{
+        "facing=up": { "model": "fluorescence:block/rednib"},
+        "facing=down": { 
+            "model": "fluorescence:block/rednib",
+            "x":180
+        },
+        "facing=north": { 
+            "model": "fluorescence:block/rednib",
+            "x":90
+        },
+        "facing=south": { 
+            "model": "fluorescence:block/rednib",
+            "y":180,
+            "x":90
+        },
+
+        "facing=east": { 
+            "model": "fluorescence:block/rednib",
+            "y":90,
+            "x":90
+        },
+        "facing=west": { 
+            "model": "fluorescence:block/rednib",
+            "y":270,
+            "x":90
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "variants":{
+        "model=0": {"model": "fluorescence:block/fence_topper"},
+        "model=1": { 
+            "model": "fluorescence:block/fence_topper_arm"
+        },
+        "model=2": { 
+            "model": "fluorescence:block/fence_topper_arm_north",
+            "y":90
+        },
+        "model=3": { 
+            "model": "fluorescence:block/fence_topper_arm",
+            "y":180
+        },
+        "model=4": { 
+            "model": "fluorescence:block/fence_topper_arm_north",
+            "y":270
+        }
+    }
+}

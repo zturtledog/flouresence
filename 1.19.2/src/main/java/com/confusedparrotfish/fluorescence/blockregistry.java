@@ -36,7 +36,7 @@ public class blockregistry {
                         System.out.println("eeee");
                     })));// .isValidSpawn(Blocks::always)
 
-    public static final RegistryObject<Block> TILED_LIGHT_PURPLE = registerblock("tiled_light",
+    public static final RegistryObject<Block> TILED_LIGHT = registerblock("tiled_light",
             () -> (light.build(light.defaultprops(0, 15), false, true)
                     .setshape(
                             shapes.tiled_lamp_south,

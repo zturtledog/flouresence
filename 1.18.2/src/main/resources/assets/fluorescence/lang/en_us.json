@@ -6,5 +6,10 @@
     "block.fluorescence.drip_light":"Drip Light",
     "block.fluorescence.pendant_light":"Pendant Light",
     "block.fluorescence.bar_light":"Bar Light",
-    "block.fluorescence.bar_light_covered":"Bar Light Covered"
+    "block.fluorescence.bar_light_covered":"Bar Light Covered",
+    "block.fluorescence.rednib":"Redstone Nib",
+    "block.fluorescence.test":"Null Safty",
+    "block.fluorescence.fence_topper":"Fence Topper",
+
+    "tooltip.fluorescence.drip_light":"can only be placed below chains"
 }

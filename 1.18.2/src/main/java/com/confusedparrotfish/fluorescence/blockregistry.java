@@ -3,11 +3,14 @@ package com.confusedparrotfish.fluorescence;
 import com.confusedparrotfish.fluorescence.light.rotype;
 import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.misc.shapes;
+import com.confusedparrotfish.fluorescence.miscblocks.fence_topper;
 import com.google.common.base.Supplier;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.RegistryObject;
@@ -38,19 +41,20 @@ public class blockregistry {
 
     public static final RegistryObject<Block> PETER_LAMP = registerblock("peter_lamp",
             () -> (light.build(light.defaultprops(0, 15), false, true))
-                .setshape(shapes.peter_lamp_turn,
-                    shapes.peter_lamp,
-                    shapes.peter_lamp_turn,
-                    shapes.peter_lamp,
-                    Shapes.block(),
-                    Shapes.block())
-                .setrothand(rotype.ALL, ais.horizontal_facing));
+                    .setshape(shapes.peter_lamp_turn,
+                            shapes.peter_lamp,
+                            shapes.peter_lamp_turn,
+                            shapes.peter_lamp,
+                            Shapes.block(),
+                            Shapes.block())
+                    .setrothand(rotype.ALL, ais.horizontal_facing));
 
     public static final RegistryObject<Block> DRIP_LIGHT = registerblock("drip_light",
             () -> (light.build(light.defaultprops(0, 15)
                     .strength(0.3F).sound(SoundType.GLASS), true, false)
                     .setshape(shapes.drip_light).setupd((state, level, pos) -> {
-                        if (!(level.getBlockState(pos.above(1)).getBlock() instanceof ChainBlock)) {
+                        Block ubuv = level.getBlockState(pos.above(1)).getBlock();
+                        if (!(ubuv instanceof ChainBlock || ubuv instanceof fence_topper)) {
                             System.out.println("insk");
                             level.destroyBlock(pos, !false);
                             // level.removeBlock(pos, !false);
@@ -82,6 +86,18 @@ public class blockregistry {
                             Shapes.block())
                     .setrothand(rotype.ALL, ais.horizontal_facing)));
 
+    public static final RegistryObject<Block> TEST = registerblock("test",
+        () -> (new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
+            .strength(0.3F).sound(SoundType.ANVIL))));
+
+    public static final RegistryObject<Block> TOPPER = registerblock("fence_topper",
+        () -> (new fence_topper(BlockBehaviour.Properties.of(Material.METAL)
+            .strength(0.3F).sound(SoundType.LANTERN))));
+
+    //redstone
+    // public static final RegistryObject<Block> POWERED_CHAIN = registerblock("powered_chain",
+    //     () -> ((new generic(null))));
+
     public static <T extends Block> RegistryObject<T> registerblock(String name, Supplier<T> block) {
         RegistryObject<T> retval = Fluorescence.blocks.register(name, block);
 
@@ -89,4 +105,15 @@ public class blockregistry {
 
         return retval;
     }
+
+    // public static <T extends Block> RegistryObject<T>
+    // registerblockwithtooltip(String tip, String name, Supplier<T> block) {
+    // RegistryObject<T> retval = Fluorescence.blocks.register(name, block);
+
+    // Fluorescence.items.register(name, () -> new tooltipblockitem(block.get(),
+    // new
+    // Item.Properties().tab(Fluorescence.fluorescencetab)).setkey(tip));//.tab(Terrq.terrqtab)
+
+    // return retval;
+    // }
 }
