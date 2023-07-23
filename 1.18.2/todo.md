@@ -1,4 +1,4 @@
-[0] - powered_chain
+[0] - powered_chain (someday)
     - model    {cm:2023-07-22}
     - textures {cm:2023-07-22}
     - function
@@ -10,6 +10,8 @@
     - function
         - flower pot
         - light
+        - tile entity
+        - block inventory
     - recipe
 
 [2] - bedside_lamp
@@ -30,10 +32,10 @@
     - function
 
 [4] - wernch
-    - model
-    - texture
+    - model {cm:2023-07-22}
+    - texture {cm:2023-07-22}
     - function
-        - cycle state
+        - cycle state {cm:2023-07-22}
         - rewrite lights to use modes
         - display the state of the light
 

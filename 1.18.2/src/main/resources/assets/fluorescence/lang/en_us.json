@@ -11,5 +11,7 @@
     "block.fluorescence.test":"Null Safty",
     "block.fluorescence.fence_topper":"Fence Topper",
 
+    "item.fluorescence.wernch":"Wernch",
+
     "tooltip.fluorescence.drip_light":"can only be placed below chains"
 }
