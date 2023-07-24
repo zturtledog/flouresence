@@ -14,6 +14,26 @@
         "facing=east": { 
             "model": "fluorescence:block/bar_light",
             "y":270
+        },
+
+        "facing=up_south": { 
+            "model": "fluorescence:block/bar_light",
+            "x":180
+        },
+        "facing=up_north": { 
+            "model": "fluorescence:block/bar_light",
+            "x":180
+        },
+
+        "facing=up_west": { 
+            "model": "fluorescence:block/bar_light",
+            "x":180,
+            "y":270
+        },
+        "facing=up_east": { 
+            "model": "fluorescence:block/bar_light",
+            "x":180,
+            "y":270
         }
     }
 }

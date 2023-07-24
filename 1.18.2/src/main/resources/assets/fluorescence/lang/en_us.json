@@ -3,6 +3,7 @@
     
     "block.fluorescence.tiled_light":"Tiled Light",
     "block.fluorescence.peter_lamp":"Peter Lamp",
+    "block.fluorescence.peter_lamp_covered":"Peter Lamp Covered",
     "block.fluorescence.drip_light":"Drip Light",
     "block.fluorescence.pendant_light":"Pendant Light",
     "block.fluorescence.bar_light":"Bar Light",
@@ -10,8 +11,11 @@
     "block.fluorescence.rednib":"Redstone Nib",
     "block.fluorescence.test":"Null Safty",
     "block.fluorescence.fence_topper":"Fence Topper",
+    "block.fluorescence.bedside":"Library Lamp",
+    "block.fluorescence.sconce":"Sconce",
 
     "item.fluorescence.wernch":"Wernch",
 
-    "tooltip.fluorescence.drip_light":"can only be placed below chains"
+    "tooltip.fluorescence.drip_light":"can only be placed below chains",
+    "tooltip.fluorescence.wernch":"a wrench used to change light modes (redstone, click, all on)\n[shift] to show current mode"
 }

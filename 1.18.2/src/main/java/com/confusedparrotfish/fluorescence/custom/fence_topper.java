@@ -105,7 +105,8 @@ public class fence_topper extends Block {
             BlockPos lpos = pos.relative(hit.getDirection());
             if (level.getBlockState(lpos).isAir()) {
                 level.setBlock(lpos, this.defaultBlockState().setValue(MODEL, dirtoint(hit.getDirection())), 3);
-            } else if (level.getBlockState(lpos).getBlock() == this) {
+            } else if (level.getBlockState(lpos).getBlock() == this && 
+                    level.getBlockState(lpos).getValue(MODEL)!=0) {
                 level.setBlock(lpos, Blocks.AIR.defaultBlockState(), 3);
             }
         }

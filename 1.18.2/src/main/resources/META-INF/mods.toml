@@ -30,6 +30,13 @@ displayName="fluorescence" #mandatory
 logoFile="fluorescence.png" #optional
 authors="confused parrot fish" #optional
 description='''
+a lighting mod
+
+extra credits:
+
+the_undefined_one: modeling and texturing for the peter lamp
+snackpirate: modeling and texturing for the sconce
+
 '''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.

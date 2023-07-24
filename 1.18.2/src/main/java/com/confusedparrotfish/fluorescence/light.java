@@ -3,11 +3,12 @@ package com.confusedparrotfish.fluorescence;
 import java.util.Random;
 import java.util.function.ToIntFunction;
 
-import com.confusedparrotfish.fluorescence.light.rotype;
 import com.confusedparrotfish.fluorescence.lib.ais;
+import com.confusedparrotfish.fluorescence.lib.ais.shape_handler_ais;
+import com.confusedparrotfish.fluorescence.lib.quarterproperty;
+import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,15 +17,11 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-// import net.minecraft.world.level.block.Mirror;
-// import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
@@ -38,13 +35,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class light extends Block {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
+    public static final quarterproperty FACING = quarterproperty.create("facing");
 
-    public static final IntegerProperty MODE = IntegerProperty.create("mode", 0, 2);
+    public static final IntegerProperty MODE = IntegerProperty.create("mode", 0, 2);    
     // 0: redstone
     // 1: click
     // 2: always on
-
+    
     public VoxelShape shape = Shapes.block();
     public VoxelShape north = Shapes.block();
     public VoxelShape east = Shapes.block();
@@ -66,13 +63,13 @@ public class light extends Block {
         super(props);
         this.registerDefaultState(this.defaultBlockState()
                 .setValue(LIT, false)
-                .setValue(FACING, Direction.UP)
+                .setValue(FACING, plane_facing.UP)
                 .setValue(MODE, 0));
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         if (rotmode == rotype.ALL) {
-            switch (state.getValue(FACING)) {
+            switch (state.getValue(FACING).flatten()) {
                 case NORTH:
                     return north;
                 case SOUTH:
@@ -91,6 +88,9 @@ public class light extends Block {
             }
         } else if (rotmode == rotype.NONE) {
             return shape;
+        } 
+        else if (rotmode == rotype.CUSTOM) {
+            return ishape.shape(state, getter, pos, context);
         }
         return shape;
     }
@@ -103,41 +103,42 @@ public class light extends Block {
                         this.defaultBlockState().getValue(MODE)==0
                                 ? Boolean.valueOf(place.getLevel().hasNeighborSignal(place.getClickedPos()))
                                 : this.defaultBlockState().getValue(LIT))
-                .setValue(FACING, rothand.rotate(place));
+                .setValue(FACING, irotation.rotate(place));
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
             BlockHitResult hit) {
         if (!level.isClientSide) {
-            if (state.getValue(MODE)==1) {
+            if (state.getValue(MODE)==1 && hand.equals(InteractionHand.MAIN_HAND)) {
                 level.setBlockAndUpdate(pos, state.cycle(LIT));
-                return InteractionResult.CONSUME;
             }
         }
         return InteractionResult.FAIL;
     }
 
-    public int mode = 0;
-    public rotype rotmode = rotype.NONE;
-    public ais.update_ais update = (state, level, pos) -> {
+    private rotype rotmode = rotype.NONE;
+    private ais.update_ais iupdate = (state, level, pos) -> {};
+    private ais.rotation_handler_ais irotation = (x) -> {
+        return plane_facing.UP;
     };
-    public ais.rotation_handler_ais rothand = (x) -> {
-        return Direction.UP;
+    private ais.shape_handler_ais ishape = (state, getter, pos, context)->{
+        return shape;
     };
 
+
     public light setupd(ais.update_ais sam) {// single abstract method
-        update = sam;
+        iupdate = sam;
         return this;
     }
 
-    public light setrothand(rotype typ, ais.rotation_handler_ais hand) {
-        rothand = hand;
-        rotmode = typ;
+    public light setrothand(ais.rotation_handler_ais hand) {
+        irotation = hand;
         return this;
     }
 
     public light setshape(VoxelShape shap) {
         shape = shap;
+        rotmode = rotype.NONE;
         return this;
     }
 
@@ -149,18 +150,27 @@ public class light extends Block {
         up = u;
         down = d;
 
+        rotmode = rotype.ALL;
+
+        return this;
+    }
+
+    public light setshape(ais.shape_handler_ais hand) {
+        rotmode = rotype.CUSTOM;
+        ishape = hand;
+
         return this;
     }
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, Random p_60465_) {
-        update.update(state, level, pos);
+        iupdate.update(state, level, pos);
     }
 
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos npos,
             boolean p_55671_) {
         if (!world.isClientSide) {
-            update.update(state, (ServerLevel) world, pos);
+            iupdate.update(state, (ServerLevel) world, pos);
             if (state.getValue(MODE) == 0) {
                 boolean flag = state.getValue(LIT);
                 if (world.hasNeighborSignal(pos) != flag) {
@@ -196,7 +206,7 @@ public class light extends Block {
                 .setValue(LIT, lit)
                 .setValue(MODE, defmode));
         // temp.setshape(Shapes.block());
-        temp.mode = defmode;
+        // temp.mode = defmode;
         return temp;
     }
 
@@ -214,8 +224,25 @@ public class light extends Block {
 
     public static enum rotype {
         NONE,
-        LOG,
+        CUSTOM,
         ALL
+    }
+
+    public static shape_handler_ais horizontal_up_down_facing_shape(VoxelShape n,VoxelShape e,VoxelShape s,VoxelShape w, VoxelShape un,VoxelShape ue,VoxelShape us,VoxelShape uw) {
+        return (state, getter, pos, context)->{
+            plane_facing face = state.getValue(FACING);
+            if (face == plane_facing.NORTH) return n;
+            if (face == plane_facing.EAST ) return e;
+            if (face == plane_facing.SOUTH) return s;
+            if (face == plane_facing.WEST ) return w;
+
+            if (face == plane_facing.UP_NORTH) return un;
+            if (face == plane_facing.UP_EAST ) return ue;
+            if (face == plane_facing.UP_SOUTH) return us;
+            if (face == plane_facing.UP_WEST ) return uw;
+
+            return Shapes.block();
+        };
     }
 }
 

@@ -1,10 +1,10 @@
 package com.confusedparrotfish.fluorescence;
 
-import net.minecraft.world.item.Item;
-
+// import com.confusedparrotfish.fluorescence.custom.fez.fezmaterial;
 import com.confusedparrotfish.fluorescence.custom.wernch;
 import com.google.common.base.Supplier;
 
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,13 +17,18 @@ public class itemregistry {
 
     public static final RegistryObject<Item> WERNCH = registeritem("wernch", 
         ()->(new wernch((new Item.Properties()).tab(Fluorescence.fluorescencetab))));
+        
+        public static <T extends Item> RegistryObject<T> registeritem(String name, Supplier<T> item) {
+            return Fluorescence.items.register(name, item);
+        }
 
-    public static <T extends Item> RegistryObject<T> registeritem(String name, Supplier<T> item) {
-        return Fluorescence.items.register(name, item);
-    }
-
-    public static <T extends Block> void registerblockitem(String name, RegistryObject<T> block) {
+        public static <T extends Block> void registerblockitem(String name, RegistryObject<T> block) {
         Fluorescence.items.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(Fluorescence.fluorescencetab)));//.tab(Terrq.terrqtab)
+        new Item.Properties().tab(Fluorescence.fluorescencetab)));//.tab(Terrq.terrqtab)
+
+        // Items
     }
 }
+
+// public static final RegistryObject<Item> FEZ = registeritem("fez", 
+//     ()->(new ArmorItem(new fezmaterial(), EquipmentSlot.HEAD, (new Item.Properties()).tab(Fluorescence.fluorescencetab))));

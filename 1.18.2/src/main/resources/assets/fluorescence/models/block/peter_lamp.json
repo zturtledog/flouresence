@@ -1,9 +1,9 @@
 {
-	"credit": "Made with Blockbench",
+	"credit": "Made with Blockbench by peter",
 	"texture_size": [56, 56],
 	"textures": {
 		"8": "fluorescence:block/peter_lamp",
-		"particle":"fluorescence:block/peter_lamp"
+		"particle": "fluorescence:block/peter_lamp"
 	},
 	"elements": [
 		{
@@ -125,7 +125,7 @@
 		"gui": {
 			"rotation": [69, -62, -149],
 			"translation": [-1, 1.5, 0],
-			"scale": [0.5, 0.5, 0.5]
+			"scale": [0.4, 0.4, 0.4]
 		},
 		"head": {
 			"rotation": [180, 0, 0],

@@ -1,8 +1,11 @@
 package com.confusedparrotfish.fluorescence.lib;
 
+import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,7 +20,7 @@ public class ais {
     }
 
     public static interface rotation_handler_ais {
-        public Direction rotate(BlockPlaceContext contxt);
+        public plane_facing rotate(BlockPlaceContext contxt);
     }
 
     public static interface shape_handler_ais {
@@ -28,14 +31,32 @@ public class ais {
         public BlockState place(BlockPlaceContext place);
     }
 
-    //instance
+    // instance
 
-    public static rotation_handler_ais horizontal_facing = (place)->{ 
-        if (place.getPlayer()!=null) {
-            Vec3 look = place.getPlayer().getLookAngle().normalize();
-        
-            return Direction.getNearest(look.x, 0, look.z);
+    public static rotation_handler_ais horizontal_facing = (place) -> {
+        Player plr = place.getPlayer();
+        if (plr != null) {
+            Vec3 look = plr.getLookAngle().normalize();
+
+            return plane_facing.fromdir(Direction.getNearest(look.x, 0, look.z));
         }
-        return Direction.NORTH;
+        return plane_facing.NORTH;
+    };
+
+    public static rotation_handler_ais horizontal_up_down_facing = (place)->{
+        plane_facing horiz = horizontal_facing.rotate(place);
+
+        Player plr = place.getPlayer();
+        if (plr != null) {
+            Vec3 look = plr.getLookAngle().normalize();
+            plane_facing verti = horiz.align(Direction.getNearest(0, look.y, 0).getOpposite());
+            if (verti.flatten() == plane_facing.DOWN) return horiz;
+            return verti;
+        }
+
+        // if (place.getClickedFace()==Direction.UP) {
+        //     return horiz.align(Direction.UP);
+        // }
+        return horiz;
     };
 }
