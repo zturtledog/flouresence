@@ -73,7 +73,7 @@ public class wernch extends Item {
             TooltipFlag p_41424_) {
         if (keybinds.shift_mod != null)
         components.add(new TextComponent((new TranslatableComponent("tooltip.fluorescence.wernch")).getString()
-                .replace("<?>", keybinds.shift_mod.getName())).withStyle(ChatFormatting.GRAY));
+                .replace("<?>", keybinds.shift_mod.getKey().getDisplayName().getString())).withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(stack, level, components, p_41424_);
     }
