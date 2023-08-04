@@ -2,9 +2,9 @@ package com.confusedparrotfish.fluorescence.custom;
 
 import com.confusedparrotfish.fluorescence.light;
 import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
+import com.confusedparrotfish.fluorescence.misc.keybinds;
 import com.confusedparrotfish.fluorescence.misc.shapes;
 
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -59,7 +59,7 @@ public class sconce extends Block {
 
         if (plr != null) {
             Vec3 look = plr.getLookAngle().normalize();
-            boolean shift = Screen.hasShiftDown();
+            boolean shift = keybinds.shift_mod.isDown();
             Direction near = Direction.getNearest(look.x, 0, look.z);
             Direction y = !shift ? Direction.DOWN : Direction.UP;
 
@@ -73,7 +73,7 @@ public class sconce extends Block {
 
             // Direction near = Direction.getNearest(look.x, 0, look.z);
             // Direction plf = place.getClickedFace();
-            // boolean shift = Screen.hasShiftDown();
+            // boolean shift = keybinds.shift_mod.isDown()();
 
             // plane_facing horiz = plane_facing.fromdir(!shift ? near :
             // near.getOpposite());

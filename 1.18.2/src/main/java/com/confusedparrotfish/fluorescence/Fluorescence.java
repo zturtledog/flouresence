@@ -1,5 +1,6 @@
 package com.confusedparrotfish.fluorescence;
 
+import com.confusedparrotfish.fluorescence.misc.keybinds;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -63,6 +64,8 @@ public class Fluorescence {
     private void clientsetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(blockregistry.TOPPER.get(), RenderType.cutout());        
         ItemBlockRenderTypes.setRenderLayer(blockregistry.SCONCE.get(), RenderType.cutout());
+
+        keybinds.init();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

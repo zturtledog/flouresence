@@ -17,5 +17,8 @@
     "item.fluorescence.wernch":"Wernch",
 
     "tooltip.fluorescence.drip_light":"can only be placed below chains",
-    "tooltip.fluorescence.wernch":"a wrench used to change light modes (redstone, click, all on)\n[shift] to show current mode"
+    "tooltip.fluorescence.wernch":"a wrench used to change light modes (redstone, click, all on)\n[<?>] to show current mode",
+
+    "key.fluorescence.modifier1":"shift modifier",
+    "key.catagories.fluorescence":"Fluorescence"
 }
