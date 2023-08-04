@@ -32,10 +32,9 @@ public class wernch extends tooltipitem {
                                 null);
                 } else {
                     lvl.setBlockAndUpdate(context.getClickedPos(),
-                            state.cycle(light.MODE).setValue(light.LIT, state.getValue(light.MODE) == 1));
-                    // lvl.setBlockAndUpdate(null, state)
-
-                    // System.out.println("mode: " + inttomode(state.cycle(light.MODE).getValue(light.MODE)));
+                            state.cycle(light.MODE).setValue(light.LIT,
+                                    (state.getValue(light.MODE) == 1) || (state.getValue(light.MODE) == 2
+                                            && context.getLevel().hasNeighborSignal(context.getClickedPos()))));
 
                     if (plr != null)
                         plr.sendMessage(
