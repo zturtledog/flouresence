@@ -14,11 +14,11 @@
         - block inventory
     - recipe
 
-[2] - bedside_lamp
+[2] - bedside_lamp {cm:2023-08-04}
     - model {cm:2023-07-23}
     - textures {cm:2023-07-23}
     - function {cm:2023-07-23}
-    - recipe
+    - recipe {cm:2023-08-04}
 
 [3] - chandelier
     - models
@@ -61,14 +61,14 @@
         - better floor ceiling support {cm:2023-07-23}
 
 [7] - standing lamp
-    - model
+    - models
     - textures
     - function 
 
-[8] - sconce {c}
+[8] - sconce {cm:2023-08-04}
     - model (snack) {cm:2023-07-23}
-    - textures (?)
-    - function
+    - textures (?) {cm:2023-08-04}
+    - function {cm:2023-08-04}
 
 [9] - peter lamp covered {cm:2023-07-23}
     - model (peter) {cm:2023-07-23}
@@ -79,3 +79,6 @@
     - apply solid side rules
     - devbuild fez
     - on off textures (tons of work not that needed)
+
+[11] - trims
+    - ?

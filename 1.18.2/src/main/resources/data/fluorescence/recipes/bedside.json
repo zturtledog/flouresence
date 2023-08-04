@@ -1,0 +1,25 @@
+{
+    "type":"minecraft:crafting_shaped",
+    "pattern":[
+        "QGQ",
+        "CNC",
+        " N "
+    ],
+    "key":{
+        "N":{
+            "item":"minecraft:gold_nugget"
+        },
+        "C":{
+            "item":"minecraft:copper_ingot"
+        },
+        "G":{
+            "item":"minecraft:glowstone_dust"
+        },
+        "Q":{
+            "item":"minecraft:quartz"
+        }
+    },
+    "result":{
+        "item": "fluorescence:bedside"
+    }
+}

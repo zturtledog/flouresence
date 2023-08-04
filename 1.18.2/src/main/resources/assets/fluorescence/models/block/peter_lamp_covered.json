@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench by peter",
 	"texture_size": [64, 64],
 	"textures": {
-		"2": "fluorescence:block/peter_lamp_covered"
+		"2": "fluorescence:block/peter_lamp_covered",
+		"particle": "fluorescence:block/peter_lamp_covered"
 	},
 	"elements": [
 		{
