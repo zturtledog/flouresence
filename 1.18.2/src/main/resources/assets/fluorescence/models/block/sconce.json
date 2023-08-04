@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"2": "fluorescence:block/sconce"
+		"2": "fluorescence:block/sconce",
+		"particle": "fluorescence:block/sconce"
 	},
 	"elements": [
 		{

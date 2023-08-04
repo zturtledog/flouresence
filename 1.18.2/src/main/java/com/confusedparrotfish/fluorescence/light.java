@@ -16,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -106,6 +107,11 @@ public class light extends Block {
                 .setValue(FACING, irotation.rotate(place));
     }
 
+    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+        return isurvive.survive(state, reader, pos);
+        // return Block.canSupportCenter(reader, pos.relative(direction), direction.getOpposite());
+    }
+
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
             BlockHitResult hit) {
         if (!level.isClientSide) {
@@ -124,7 +130,7 @@ public class light extends Block {
     private ais.shape_handler_ais ishape = (state, getter, pos, context)->{
         return shape;
     };
-
+    private ais.block_surviveable_handler isurvive = (state, reader, pos) -> {return true;};
 
     public light setupd(ais.update_ais sam) {// single abstract method
         iupdate = sam;
@@ -135,6 +141,11 @@ public class light extends Block {
         irotation = hand;
         return this;
     }
+
+    public light setsurv(ais.block_surviveable_handler surv) {
+        isurvive = surv;
+        return this;
+    } 
 
     public light setshape(VoxelShape shap) {
         shape = shap;

@@ -1,18 +1,19 @@
 package com.confusedparrotfish.fluorescence;
 
 import com.confusedparrotfish.fluorescence.custom.fence_topper;
+import com.confusedparrotfish.fluorescence.custom.sconce;
 import com.confusedparrotfish.fluorescence.dev.nullsafty;
 import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.misc.shapes;
 import com.google.common.base.Supplier;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.core.Direction;
 
 import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
 
@@ -71,14 +72,13 @@ public class blockregistry {
     public static final RegistryObject<Block> DRIP_LIGHT = registerblock("drip_light",
             () -> (light.build(light.defaultprops(0, 15)
                     .strength(0.3F).sound(SoundType.GLASS), true, 2)
-                    .setshape(shapes.drip_light).setupd((state, level, pos) -> {
-                        Block ubuv = level.getBlockState(pos.above(1)).getBlock();
-                        if (!(ubuv instanceof ChainBlock || ubuv instanceof fence_topper)) {
-                            System.out.println("insk");
+                    .setshape(shapes.drip_light).setsurv((state, reader, pos) -> {
+                        return Block.canSupportCenter(reader, pos.relative(Direction.UP), Direction.DOWN);
+                    }).setupd((state, level, pos) -> {
+                        if (!state.canSurvive(level,pos)) {
                             level.destroyBlock(pos, !false);
-                            // level.removeBlock(pos, !false);
                         }
-                    })));// .isValidSpawn(Blocks::always)
+                    })));
 
     public static final RegistryObject<Block> PENDANT_LIGHT = registerblock("pendant_light",
             () -> (light.build(light.defaultprops(0, 15)
@@ -126,6 +126,10 @@ public class blockregistry {
             () -> (new fence_topper(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(0.3F).sound(SoundType.LANTERN))));
 
+    public static final RegistryObject<Block> SCONCE = registerblock("sconce",
+            () -> (new sconce(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(0.3F).sound(SoundType.LANTERN))));
+
     // public static final RegistryObject<Block> POT_LAMP =
     // registerblock("pot_lamp",
     // ()->(new FlowerPotBlock(null, BAR_LIGHT, null)));
@@ -149,3 +153,15 @@ public class blockregistry {
     // return retval;
     // }
 }
+
+/*
+ * .setupd((state, level, pos) -> {
+ * Block ubuv = level.getBlockState(pos.above(1)).getBlock();
+ * if (!(ubuv instanceof ChainBlock || ubuv instanceof fence_topper || ubuv
+ * instanceof sconce)) {
+ * System.out.println("insk");
+ * level.destroyBlock(pos, !false);
+ * // level.removeBlock(pos, !false);
+ * }
+ * })
+ */

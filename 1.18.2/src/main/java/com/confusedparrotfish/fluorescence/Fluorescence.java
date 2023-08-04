@@ -61,7 +61,8 @@ public class Fluorescence {
     private void commonSetup(final FMLCommonSetupEvent event) {}
 
     private void clientsetup(final FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(blockregistry.TOPPER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(blockregistry.TOPPER.get(), RenderType.cutout());        
+        ItemBlockRenderTypes.setRenderLayer(blockregistry.SCONCE.get(), RenderType.cutout());
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

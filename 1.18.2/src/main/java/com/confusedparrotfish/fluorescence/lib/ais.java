@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -29,6 +30,10 @@ public class ais {
 
     public static interface placement_ais {
         public BlockState place(BlockPlaceContext place);
+    }
+
+    public static interface block_surviveable_handler {
+        public boolean survive(BlockState state, LevelReader reader, BlockPos pos);
     }
 
     // instance
