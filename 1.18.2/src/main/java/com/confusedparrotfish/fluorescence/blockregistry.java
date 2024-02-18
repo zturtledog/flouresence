@@ -5,6 +5,7 @@ import com.confusedparrotfish.fluorescence.custom.sconce;
 import com.confusedparrotfish.fluorescence.dev.nullsafty;
 import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.misc.shapes;
+import com.confusedparrotfish.fluorescence.redstone.poweredchain;
 import com.google.common.base.Supplier;
 
 import net.minecraft.world.level.block.Block;
@@ -75,11 +76,12 @@ public class blockregistry {
                     .setshape(shapes.drip_light).setsurv((state, reader, pos) -> {
                         return Block.canSupportCenter(reader, pos.relative(Direction.UP), Direction.DOWN);
                     }).setupd((state, level, pos) -> {
-                        if (!state.canSurvive(level,pos)) {
+                        if (!state.canSurvive(level, pos)) {
                             level.destroyBlock(pos, !false);
                         }
                     })));
 
+    @SuppressWarnings("null")
     public static final RegistryObject<Block> PENDANT_LIGHT = registerblock("pendant_light",
             () -> (light.build(light.defaultprops(0, 15)
                     .strength(0.3F).sound(SoundType.GLASS), true, 2)
@@ -89,6 +91,17 @@ public class blockregistry {
             () -> (light.build(light.defaultprops(0, 15)
                     .strength(0.3F).sound(SoundType.GLASS), true, 1)
                     .setshape(shapes.bedside_lamp)));
+
+    public static final RegistryObject<Block> FIRE_PIT = registerblock("pit",
+            () -> (light.build(light.defaultprops(0, 15)
+                    .strength(0.3F).sound(SoundType.METAL), true, 1)
+                    .setshape(shapes.fire_pit).setsurv((state, reader, pos) -> {
+                        return Block.canSupportCenter(reader, pos.relative(Direction.DOWN), Direction.UP);
+                    }).setupd((state, level, pos) -> {
+                        if (!state.canSurvive(level, pos)) {
+                            level.destroyBlock(pos, !false);
+                        }
+                    }).setsmokes(true)));
 
     public static final RegistryObject<Block> BAR_LIGHT = registerblock("bar_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0)
@@ -126,9 +139,31 @@ public class blockregistry {
             () -> (new fence_topper(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(0.3F).sound(SoundType.LANTERN))));
 
-    public static final RegistryObject<Block> SCONCE = registerblock("sconce",
+    public static final RegistryObject<Block> SCONCE = registerblock_no_item("sconce",
             () -> (new sconce(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(0.3F).sound(SoundType.LANTERN))));
+
+    public static final RegistryObject<Block> DROP_LIGHT = registerblock("drop_light",
+            () -> (light.build(light.defaultprops(0, 15)
+                    .strength(0.3F).sound(SoundType.GLASS), true, 2)
+                    .setshape(shapes.drop_light).setsurv((state, reader, pos) -> {
+                        return Block.canSupportCenter(reader, pos.relative(Direction.UP), Direction.DOWN)
+                               || Block.canSupportCenter(reader, pos.relative(Direction.DOWN), Direction.UP);
+                    }).setupd((state, level, pos) -> {
+                        if (!state.canSurvive(level, pos)) {
+                            level.destroyBlock(pos, !false);
+                        }
+                    })));
+
+    // public static final RegistryObject<Block> POWERED_CHAIN = registerblock("powered_chain",
+    //         () -> (new poweredchain(BlockBehaviour.Properties.of(Material.METAL)
+    //                 .strength(0.3F).sound(SoundType.LANTERN))));
+        
+            
+
+    // public static final RegistryObject<Block> SPOT = registerblock("spop",
+    // () -> (new spot(BlockBehaviour.Properties.of(Material.BUILDABLE_GLASS)
+    // .strength(0.3F).sound(SoundType.GLASS))));
 
     // public static final RegistryObject<Block> POT_LAMP =
     // registerblock("pot_lamp",
@@ -139,6 +174,12 @@ public class blockregistry {
 
         itemregistry.registerblockitem(name, retval);
 
+        return retval;
+    }
+
+    public static <T extends Block> RegistryObject<T> registerblock_no_item(String name, Supplier<T> block) {
+        RegistryObject<T> retval = Fluorescence.blocks.register(name, block);
+        // itemregistry.registertooltipblockitem(name, retval,tip);
         return retval;
     }
 

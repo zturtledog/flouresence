@@ -64,6 +64,8 @@ public class Fluorescence {
     private void clientsetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(blockregistry.TOPPER.get(), RenderType.cutout());        
         ItemBlockRenderTypes.setRenderLayer(blockregistry.SCONCE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(blockregistry.FIRE_PIT.get(), RenderType.cutout());
+        // ItemBlockRenderTypes.setRenderLayer(blockregistry.POWERED_CHAIN.get(), RenderTsype.cutout());
 
         keybinds.init();
     }
@@ -80,4 +82,6 @@ public class Fluorescence {
             LOGGER.info("HELLO from Register Block");
         }
     }
+
+    public interface lightnonsencery {}
 }

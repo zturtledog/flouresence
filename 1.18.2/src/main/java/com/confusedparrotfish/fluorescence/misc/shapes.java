@@ -225,6 +225,24 @@ public class shapes {
         Block.box(4, 1, 6.25, 7, 8.5, 9.75)
         ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+    public static final VoxelShape fire_pit = Stream.of(
+        Block.box(1, 0, 1, 3, 8, 15),
+        Block.box(13, 0, 1, 15, 8, 15),
+        Block.box(3, 0, 1, 13, 8, 3),
+        Block.box(3, 0, 13, 13, 8, 15),
+        Block.box(3, 0, 3, 13, 3, 13)
+        ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+    public static final VoxelShape drop_light = Stream.of(
+        Block.box(7.5, 14, 3, 8.5, 15, 13),
+        Block.box(3, 14, 7.5, 13, 15, 8.5),
+        Block.box(3, 1, 7.5, 13, 2, 8.5),
+        Block.box(7.5, 1, 3, 8.5, 2, 13),
+        Block.box(2, 2, 2, 14, 14, 14),
+        Block.box(7, 14, 7, 9, 16, 9),
+        Block.box(7, 0, 7, 9, 2, 9)
+        ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
     public static ArrayList<VoxelShape> calc_enumeration(VoxelShape n, VoxelShape e, VoxelShape s, VoxelShape w,
             VoxelShape b) {
         ArrayList<VoxelShape> inl = new ArrayList<VoxelShape>();

@@ -1,14 +1,24 @@
 {
-    "type":"minecraft:block",
-    "pools":[
-        {
-            "rolls":1,
-            "entries":[
-                {
-                    "type":"minecraft:item",
-                    "name":"fluorescence:fence_topper"
-                }
-            ]
-        }
+    "type": "minecraft:block",
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "fluorescence:fence_topper"
+          }
+        ],
+        "conditions": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "fluorescence:fence_topper",
+            "properties": {
+              "model": "0"
+            }
+          }
+        ]
+      }
     ]
-}
+  }
+  

@@ -1,0 +1,10 @@
+{
+    "variants":{
+        "lit=true":{
+            "model": "fluorescence:block/pit"
+        },
+        "lit=false":{
+            "model": "fluorescence:block/pit_unlit"
+        }
+    }
+}

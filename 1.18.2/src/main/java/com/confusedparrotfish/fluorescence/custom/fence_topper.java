@@ -71,7 +71,9 @@ public class fence_topper extends Block {
 
         // todo: break blocks
 
-        super.destroy(la, pos, state);
+        // if (state.getValue(MODEL) == 0) {
+            super.destroy(la, pos, state);
+        // }
     }
 
     @Override

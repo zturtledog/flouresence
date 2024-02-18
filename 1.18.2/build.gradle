@@ -145,6 +145,19 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    // maven {
+    //     // Location of the maven for mixed mappings, Registrate, and Flywheel
+    //     name 'tterrag maven'
+    //     url 'https://maven.tterrag.com'
+    // }
+
+    // maven {
+    //     url 'https://www.cursemaven.com'
+    //     content {
+    //         includeGroup "curse.maven"
+    //     }
+    // }
 }
 
 dependencies {
@@ -164,6 +177,10 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    //create testing
+    // implementation fg.deobf("curse.maven:create-328085:4550986")
+    // implementation fg.deobf("curse.maven:flywheel-486392:4341461")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

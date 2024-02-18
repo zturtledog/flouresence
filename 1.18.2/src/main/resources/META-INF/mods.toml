@@ -28,7 +28,7 @@ displayName="fluorescence" #mandatory
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="fluorescence.png" #optional
-authors="confused parrot fish" #optional
+authors="confusedParrotFish" #optional
 description='''
 a lighting mod
 

@@ -1,25 +1,25 @@
 {
     "type":"minecraft:crafting_shaped",
     "pattern":[
-        "IBI",
-        "IGI",
-        " R "
+        " R ",
+        "BMB",
+        " S "
     ],
     "key":{
-        "I":{
-            "item":"minecraft:iron_ingot"
+        "M":{
+            "item":"minecraft:magma_block"
         },
         "B":{
             "item":"minecraft:iron_bars"
         },
-        "G":{
-            "item":"minecraft:glowstone_dust"
-        },
         "R":{
             "item":"minecraft:redstone"
+        },
+        "S":{
+            "item":"minecraft:blackstone"
         }
     },
     "result":{
-        "item": "fluorescence:pendant_light"
+        "item": "fluorescence:pit"
     }
 }

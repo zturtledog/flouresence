@@ -3,13 +3,17 @@ package com.confusedparrotfish.fluorescence;
 import java.util.Random;
 import java.util.function.ToIntFunction;
 
+import com.confusedparrotfish.fluorescence.Fluorescence.lightnonsencery;
 import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.lib.ais.shape_handler_ais;
 import com.confusedparrotfish.fluorescence.lib.quarterproperty;
 import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -33,7 +37,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 //todo: flat rotation
 //todo: connected model blocks
 
-public class light extends Block {
+public class light extends Block implements lightnonsencery {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
     public static final quarterproperty FACING = quarterproperty.create("facing");
@@ -50,6 +54,8 @@ public class light extends Block {
     public VoxelShape west = Shapes.block();
     public VoxelShape up = Shapes.block();
     public VoxelShape down = Shapes.block();
+
+    public boolean smoke_emiter = false;
 
     public static ToIntFunction<BlockState> lightpropogate(int min, int max) {// todo easings
         return (state) -> {
@@ -173,6 +179,11 @@ public class light extends Block {
         return this;
     }
 
+    public light setsmokes(boolean does) {
+        smoke_emiter = does;
+        return this;
+    }
+
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, Random p_60465_) {
         iupdate.update(state, level, pos);
@@ -255,6 +266,21 @@ public class light extends Block {
             return Shapes.block();
         };
     }
+
+    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
+      if (smoke_emiter && state.getValue(light.LIT)) {
+         if (rand.nextInt(10) == 0) {
+            world.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 0.5F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.6F, false);
+         }
+
+         if (rand.nextInt(5) == 0) {
+            for(int i = 0; i < rand.nextInt(1) + 1; ++i) {
+               world.addParticle(ParticleTypes.LAVA, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, (double)(rand.nextFloat() / 2.0F), 5.0E-5D, (double)(rand.nextFloat() / 2.0F));
+            }
+         }
+
+      }
+   }
 }
 
 // .setValue(FLICKER, flickers));
