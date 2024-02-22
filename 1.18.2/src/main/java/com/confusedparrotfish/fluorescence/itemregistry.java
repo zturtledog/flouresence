@@ -1,8 +1,7 @@
 package com.confusedparrotfish.fluorescence;
 
-import com.confusedparrotfish.fluorescence.custom.sconce_item;
-// import com.confusedparrotfish.fluorescence.custom.fez.fezmaterial;
-import com.confusedparrotfish.fluorescence.custom.wernch;
+import com.confusedparrotfish.fluorescence.custom.item.sconce_item;
+import com.confusedparrotfish.fluorescence.custom.item.wernch;
 import com.confusedparrotfish.fluorescence.lib.tooltipblockitem;
 import com.google.common.base.Supplier;
 
@@ -21,7 +20,12 @@ public class itemregistry {
             () -> (new wernch((new Item.Properties()).tab(Fluorescence.fluorescencetab))));
 
     public static final RegistryObject<Item> SCONCE = registeritem("sconce",
-            () -> (new sconce_item(blockregistry.SCONCE.get(),(new Item.Properties()).tab(Fluorescence.fluorescencetab))));
+            () -> (new sconce_item(blockregistry.SCONCE.get(),
+                    (new Item.Properties()).tab(Fluorescence.fluorescencetab))));
+
+    public static final RegistryObject<Item> HIDDEN_LIGHT = registeritem("hidden_light",
+            () -> (new sconce_item(blockregistry.HIDDEN_LIGHT.get(),
+                    (new Item.Properties()).tab(Fluorescence.fluorescencetab))));
 
     public static <T extends Item> RegistryObject<T> registeritem(String name, Supplier<T> item) {
         return Fluorescence.items.register(name, item);

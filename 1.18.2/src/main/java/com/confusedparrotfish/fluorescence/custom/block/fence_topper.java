@@ -1,4 +1,4 @@
-package com.confusedparrotfish.fluorescence.custom;
+package com.confusedparrotfish.fluorescence.custom.block;
 
 import com.confusedparrotfish.fluorescence.misc.shapes;
 

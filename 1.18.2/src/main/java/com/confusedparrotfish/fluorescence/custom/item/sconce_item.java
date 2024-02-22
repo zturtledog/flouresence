@@ -1,4 +1,4 @@
-package com.confusedparrotfish.fluorescence.custom;
+package com.confusedparrotfish.fluorescence.custom.item;
 
 import java.util.List;
 

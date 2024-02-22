@@ -16,6 +16,8 @@
     "block.fluorescence.pit":"Fire Pit",
     "block.fluorescence.powered_chain":"Powered Chain",
     "block.fluorescence.drop_light":"Drop Light",
+    "block.fluorescence.hidden_light":"Hidden Light",
+    "block.fluorescence.peter_tube_light":"Peter Industrialized Quad Tube Light ™",
 
     "item.fluorescence.wernch":"Wernch",
 

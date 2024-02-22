@@ -243,6 +243,11 @@ public class shapes {
         Block.box(7, 0, 7, 9, 2, 9)
         ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
+    public static final VoxelShape peter_tube_light = Block.box(-6, 12, 4, 22, 16, 12);
+    public static final VoxelShape peter_tube_light_turn = Block.box(4, 12, -6, 12, 16, 22);
+    public static final VoxelShape peter_tube_light_up = Block.box(-6, 0, 4, 22, 4, 12);
+    public static final VoxelShape peter_tube_light_turn_up = Block.box(4, 0, -6, 12, 4, 22);
+
     public static ArrayList<VoxelShape> calc_enumeration(VoxelShape n, VoxelShape e, VoxelShape s, VoxelShape w,
             VoxelShape b) {
         ArrayList<VoxelShape> inl = new ArrayList<VoxelShape>();

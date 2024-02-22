@@ -1,7 +1,7 @@
 {
     "type":"minecraft:crafting_shaped",
     "pattern":[
-        " R ",
+        "NRN",
         "BMB",
         " S "
     ],
@@ -16,7 +16,10 @@
             "item":"minecraft:redstone"
         },
         "S":{
-            "item":"minecraft:blackstone"
+            "item":"minecraft:stone"
+        },
+        "N":{
+            "item": "iron_nugget"
         }
     },
     "result":{

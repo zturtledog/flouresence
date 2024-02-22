@@ -1,7 +1,8 @@
 package com.confusedparrotfish.fluorescence;
 
-import com.confusedparrotfish.fluorescence.custom.fence_topper;
-import com.confusedparrotfish.fluorescence.custom.sconce;
+import com.confusedparrotfish.fluorescence.custom.block.fence_topper;
+import com.confusedparrotfish.fluorescence.custom.block.sconce;
+import com.confusedparrotfish.fluorescence.custom.tile.hidden_light;
 import com.confusedparrotfish.fluorescence.dev.nullsafty;
 import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.misc.shapes;
@@ -154,6 +155,24 @@ public class blockregistry {
                             level.destroyBlock(pos, !false);
                         }
                     })));
+
+    public static final RegistryObject<Block> HIDDEN_LIGHT = registerblock_no_item("hidden_light", () -> (
+        hidden_light.build(light.defaultprops(1, 15), true, 2)
+    ));
+
+    public static final RegistryObject<Block> PETER_TUBE_LIGHT = registerblock("peter_tube_light",
+            () -> (light.build(light.defaultprops(0, 15), false, 0))
+                    .setshape(light.horizontal_up_down_facing_shape(
+                            shapes.peter_tube_light_turn,
+                            shapes.peter_tube_light,
+                            shapes.peter_tube_light_turn,
+                            shapes.peter_tube_light,
+
+                            shapes.peter_tube_light_turn_up,
+                            shapes.peter_tube_light_up,
+                            shapes.peter_tube_light_turn_up,
+                            shapes.peter_tube_light_up))
+                    .setrothand(ais.horizontal_up_down_facing));
 
     // public static final RegistryObject<Block> POWERED_CHAIN = registerblock("powered_chain",
     //         () -> (new poweredchain(BlockBehaviour.Properties.of(Material.METAL)
