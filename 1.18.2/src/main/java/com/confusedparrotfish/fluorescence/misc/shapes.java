@@ -248,6 +248,20 @@ public class shapes {
     public static final VoxelShape peter_tube_light_up = Block.box(-6, 0, 4, 22, 4, 12);
     public static final VoxelShape peter_tube_light_turn_up = Block.box(4, 0, -6, 12, 4, 22);
 
+    public static final VoxelShape peter_wood_light_north = Block.box(-8, 6.5, 12, 24, 9.5, 16);
+    public static final VoxelShape peter_wood_light_east = Block.box(0, 6.5, -8, 4, 9.5, 24);
+    public static final VoxelShape peter_wood_light_south = Block.box(-8, 6.5, 0, 24, 9.5, 4);
+    public static final VoxelShape peter_wood_light_west = Block.box(12, 6.5, -8, 16, 9.5, 24);
+    public static final VoxelShape peter_wood_light_down = Block.box(-8, 13, 6, 24, 16, 10);
+    public static final VoxelShape peter_wood_light_down_turn = Block.box(6, 13, -8, 10, 16, 24);
+    public static final VoxelShape peter_wood_light_up = Block.box(-8, 0, 6, 24, 3, 10);
+    public static final VoxelShape peter_wood_light_up_turn = Block.box(6, 0, -8, 10, 3, 24);
+
+    public static final VoxelShape peter_double_light = Block.box(3, 13, -1, 13, 16, 17);
+    public static final VoxelShape peter_double_light_turn = Block.box(-1, 13, 3, 17, 16, 13);
+    public static final VoxelShape peter_double_light_up = Block.box(3, 0, -1, 13, 3, 17);
+    public static final VoxelShape peter_double_light_turn_up = Block.box(-1, 0, 3, 17, 3, 13);
+
     public static ArrayList<VoxelShape> calc_enumeration(VoxelShape n, VoxelShape e, VoxelShape s, VoxelShape w,
             VoxelShape b) {
         ArrayList<VoxelShape> inl = new ArrayList<VoxelShape>();

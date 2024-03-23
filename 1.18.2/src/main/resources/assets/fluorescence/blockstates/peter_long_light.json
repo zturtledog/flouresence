@@ -1,0 +1,43 @@
+{
+    "variants":{
+        "facing=south": { 
+            "model": "fluorescence:block/peter_long_light",
+            "y":90
+        },
+        "facing=north": { 
+            "model": "fluorescence:block/peter_long_light",
+            "y":90
+        },
+
+        "facing=west": { 
+            "model": "fluorescence:block/peter_long_light",
+            "y":180
+        },
+        "facing=east": { 
+            "model": "fluorescence:block/peter_long_light",
+            "y":180
+        },
+
+        "facing=up_south": { 
+            "model": "fluorescence:block/peter_long_light",
+            "x":180,
+            "y":90
+        },
+        "facing=up_north": { 
+            "model": "fluorescence:block/peter_long_light",
+            "x":180,
+            "y":90
+        },
+
+        "facing=up_west": { 
+            "model": "fluorescence:block/peter_long_light",
+            "x":180,
+            "y":180
+        },
+        "facing=up_east": { 
+            "model": "fluorescence:block/peter_long_light",
+            "x":180,
+            "y":180
+        }
+    }
+}

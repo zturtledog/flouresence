@@ -17,7 +17,12 @@
     "block.fluorescence.powered_chain":"Powered Chain",
     "block.fluorescence.drop_light":"Drop Light",
     "block.fluorescence.hidden_light":"Hidden Light",
-    "block.fluorescence.peter_tube_light":"Peter Industrialized Quad Tube Light ™",
+    "block.fluorescence.peter_tube_light":"Peter Industrialized Quad Tube Light",
+    "block.fluorescence.peter_double_light":"Peter Double Light",
+    "block.fluorescence.peter_long_light_covered":"Peter Long Light Covered",
+    "block.fluorescence.peter_long_light":"Peter Long Light",
+    "block.fluorescence.peter_trough_light":"Peter Trough Light",
+    "block.fluorescence.peter_wood_light":"Peter Wood Light",
 
     "item.fluorescence.wernch":"Wernch",
 
@@ -26,6 +31,7 @@
     "tooltip.fluorescence.drip_light":"can only be placed below chains",
     "tooltip.fluorescence.wernch":"a wrench used to change light modes (redstone, click, all on)\nclick while pressing [<?:1>] to show current mode\nin multiplayer use [<?:2>] instead",
     "tooltip.fluorescence.sconce":"hold [<?:1>] while placing to flip placement, in multiplayer use [<?:2>] instead",
+    "tooltip.fluorescence.hidden_light":"use a block on this block to absorb its appearance (no shape or function)",
 
     "key.fluorescence.modifier1":"shift modifier",
     "key.catagories.fluorescence":"Fluorescence"

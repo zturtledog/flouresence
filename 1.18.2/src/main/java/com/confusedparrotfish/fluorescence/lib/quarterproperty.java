@@ -115,10 +115,17 @@ public class quarterproperty extends EnumProperty<plane_facing> {
         }
 
         public plane_facing align(Direction dir) {
-            Direction pla = this.todir();
-            switch (dir) {
+            return dir_align(dir, this.todir());
+        }
+
+        public plane_facing inv_align(Direction dir) {
+            return dir_align(this.todir(),dir);
+        }
+
+        public static plane_facing dir_align(Direction first, Direction second) {
+            switch (first) {
                 case NORTH:
-                    switch (pla) {
+                    switch (second) {
                         case NORTH:return plane_facing.NORTH;
                         case EAST:return  plane_facing.NORTH_EAST;
                         case SOUTH:return plane_facing.NORTH_SOUTH;
@@ -127,7 +134,7 @@ public class quarterproperty extends EnumProperty<plane_facing> {
                         case DOWN:return  plane_facing.NORTH_DOWN;
                     }
                 case EAST:
-                    switch (pla) {
+                    switch (second) {
                         case NORTH:return plane_facing.EAST_NORTH;
                         case EAST:return  plane_facing.EAST;
                         case SOUTH:return plane_facing.EAST_SOUTH;
@@ -136,7 +143,7 @@ public class quarterproperty extends EnumProperty<plane_facing> {
                         case DOWN:return  plane_facing.EAST_DOWN;
                     }
                 case SOUTH:
-                    switch (pla) {
+                    switch (second) {
                         case NORTH:return plane_facing.SOUTH_NORTH;
                         case EAST:return  plane_facing.SOUTH_EAST;
                         case SOUTH:return plane_facing.SOUTH;
@@ -145,7 +152,7 @@ public class quarterproperty extends EnumProperty<plane_facing> {
                         case DOWN:return  plane_facing.SOUTH_DOWN;
                     }
                 case WEST:
-                    switch (pla) {
+                    switch (second) {
                         case NORTH:return plane_facing.WEST_NORTH;
                         case EAST:return  plane_facing.WEST_EAST;
                         case SOUTH:return plane_facing.WEST_SOUTH;
@@ -154,7 +161,7 @@ public class quarterproperty extends EnumProperty<plane_facing> {
                         case DOWN:return  plane_facing.WEST_DOWN;
                     }
                 case UP:
-                    switch (pla) {
+                    switch (second) {
                         case NORTH:return plane_facing.UP_NORTH;
                         case EAST:return  plane_facing.UP_EAST;
                         case SOUTH:return plane_facing.UP_SOUTH;
@@ -163,7 +170,7 @@ public class quarterproperty extends EnumProperty<plane_facing> {
                         case DOWN:return  plane_facing.UP_DOWN;
                     }
                 case DOWN:
-                    switch (pla) {
+                    switch (second) {
                         case NORTH:return plane_facing.DOWN_NORTH;
                         case EAST:return  plane_facing.DOWN_EAST;
                         case SOUTH:return plane_facing.DOWN_SOUTH;
@@ -174,7 +181,7 @@ public class quarterproperty extends EnumProperty<plane_facing> {
             }
 
 
-            return fromdir(dir);
+            return fromdir(first);
         }
 
         private Direction todir() {

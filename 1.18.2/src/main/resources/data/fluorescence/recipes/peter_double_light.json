@@ -1,22 +1,22 @@
 {
     "type":"minecraft:crafting_shaped",
     "pattern":[
-        "IRI",
-        "GIG",
-        " G "
+        "III",
+        "GRG",
+        "III"
     ],
     "key":{
-        "I":{
-            "item":"minecraft:iron_ingot"
-        },
         "R":{
             "item":"minecraft:redstone"
+        },
+        "I":{
+            "item":"minecraft:iron_nugget"
         },
         "G":{
             "item":"minecraft:glowstone_dust"
         }
     },
     "result":{
-        "item": "fluorescence:peter_tube_light"
+        "item": "fluorescence:peter_double_light"
     }
 }

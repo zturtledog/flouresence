@@ -2,7 +2,6 @@ package com.confusedparrotfish.fluorescence;
 
 import com.confusedparrotfish.fluorescence.custom.item.sconce_item;
 import com.confusedparrotfish.fluorescence.custom.item.wernch;
-import com.confusedparrotfish.fluorescence.lib.tooltipblockitem;
 import com.google.common.base.Supplier;
 
 import net.minecraft.world.item.Item;
@@ -21,11 +20,11 @@ public class itemregistry {
 
     public static final RegistryObject<Item> SCONCE = registeritem("sconce",
             () -> (new sconce_item(blockregistry.SCONCE.get(),
-                    (new Item.Properties()).tab(Fluorescence.fluorescencetab))));
+                    (new Item.Properties()).tab(Fluorescence.fluorescencetab),"sconce")));
 
     public static final RegistryObject<Item> HIDDEN_LIGHT = registeritem("hidden_light",
             () -> (new sconce_item(blockregistry.HIDDEN_LIGHT.get(),
-                    (new Item.Properties()).tab(Fluorescence.fluorescencetab))));
+                    (new Item.Properties()).tab(Fluorescence.fluorescencetab),"hidden_light")));
 
     public static <T extends Item> RegistryObject<T> registeritem(String name, Supplier<T> item) {
         return Fluorescence.items.register(name, item);

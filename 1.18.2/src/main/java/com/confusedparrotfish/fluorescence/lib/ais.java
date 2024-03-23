@@ -4,6 +4,7 @@ import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -63,5 +64,14 @@ public class ais {
         //     return horiz.align(Direction.UP);
         // }
         return horiz;
+    };
+
+    public static rotation_handler_ais horizontal_multi_facing = (place)->{
+        Direction face = place.getClickedFace();
+        plane_facing horiz = horizontal_facing.rotate(place);
+        if (face.getAxis()==Axis.Y) {
+            return horiz.inv_align(face);
+        }
+        return plane_facing.fromdir(face);
     };
 }

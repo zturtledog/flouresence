@@ -1,22 +1,22 @@
 {
     "type":"minecraft:crafting_shaped",
     "pattern":[
-        "IRI",
-        "GIG",
-        " G "
+        " W ",
+        "GRG",
+        " W "
     ],
     "key":{
-        "I":{
-            "item":"minecraft:iron_ingot"
-        },
         "R":{
             "item":"minecraft:redstone"
         },
         "G":{
             "item":"minecraft:glowstone_dust"
+        },
+        "W":{
+            "tag":"minecraft:planks"
         }
     },
     "result":{
-        "item": "fluorescence:peter_tube_light"
+        "item": "fluorescence:peter_wood_light"
     }
 }

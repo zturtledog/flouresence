@@ -2,21 +2,21 @@
     "type":"minecraft:crafting_shaped",
     "pattern":[
         "IRI",
-        "GIG",
-        " G "
+        "GGG" ,
+        "   "
     ],
     "key":{
-        "I":{
-            "item":"minecraft:iron_ingot"
-        },
         "R":{
             "item":"minecraft:redstone"
+        },
+        "I":{
+            "item":"minecraft:iron_ingot"
         },
         "G":{
             "item":"minecraft:glowstone_dust"
         }
     },
     "result":{
-        "item": "fluorescence:peter_tube_light"
+        "item": "fluorescence:peter_trough_light"
     }
 }

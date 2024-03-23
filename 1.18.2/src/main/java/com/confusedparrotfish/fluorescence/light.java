@@ -8,6 +8,7 @@ import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.lib.ais.shape_handler_ais;
 import com.confusedparrotfish.fluorescence.lib.quarterproperty;
 import com.confusedparrotfish.fluorescence.lib.quarterproperty.plane_facing;
+import com.confusedparrotfish.fluorescence.lib.util.option;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,6 +18,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -42,11 +44,11 @@ public class light extends Block implements lightnonsencery {
 
     public static final quarterproperty FACING = quarterproperty.create("facing");
 
-    public static final IntegerProperty MODE = IntegerProperty.create("mode", 0, 2);    
+    public static final IntegerProperty MODE = IntegerProperty.create("mode", 0, 2);
     // 0: redstone
     // 1: click
     // 2: always on
-    
+
     public VoxelShape shape = Shapes.block();
     public VoxelShape north = Shapes.block();
     public VoxelShape east = Shapes.block();
@@ -56,6 +58,8 @@ public class light extends Block implements lightnonsencery {
     public VoxelShape down = Shapes.block();
 
     public boolean smoke_emiter = false;
+
+    public option<Item> clickitem = null;
 
     public static ToIntFunction<BlockState> lightpropogate(int min, int max) {// todo easings
         return (state) -> {
@@ -95,8 +99,7 @@ public class light extends Block implements lightnonsencery {
             }
         } else if (rotmode == rotype.NONE) {
             return shape;
-        } 
-        else if (rotmode == rotype.CUSTOM) {
+        } else if (rotmode == rotype.CUSTOM) {
             return ishape.shape(state, getter, pos, context);
         }
         return shape;
@@ -107,7 +110,7 @@ public class light extends Block implements lightnonsencery {
 
         return this.defaultBlockState()
                 .setValue(LIT,
-                        this.defaultBlockState().getValue(MODE)==0
+                        this.defaultBlockState().getValue(MODE) == 0
                                 ? Boolean.valueOf(place.getLevel().hasNeighborSignal(place.getClickedPos()))
                                 : this.defaultBlockState().getValue(LIT))
                 .setValue(FACING, irotation.rotate(place));
@@ -115,28 +118,49 @@ public class light extends Block implements lightnonsencery {
 
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
         return isurvive.survive(state, reader, pos);
-        // return Block.canSupportCenter(reader, pos.relative(direction), direction.getOpposite());
+        // return Block.canSupportCenter(reader, pos.relative(direction),
+        // direction.getOpposite());
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
             BlockHitResult hit) {
         if (!level.isClientSide) {
-            if (state.getValue(MODE)==1 && hand.equals(InteractionHand.MAIN_HAND)) {
+            if (state.getValue(MODE) == 1 && hand.equals(InteractionHand.MAIN_HAND)) {
+                // if (!state.getValue(LIT) && clickitem.present() && player.getItemInHand(hand).is(clickitem.get())) {
+                //     level.setBlockAndUpdate(pos, state.cycle(LIT));
+                //     return InteractionResult.CONSUME;
+                // }
                 level.setBlockAndUpdate(pos, state.cycle(LIT));
+                // return InteractionResult.SUCCESS;
+                // if (state.getValue(LIT) || (!clickitem.present() || (player.getItemInHand(hand).is(clickitem.get())))) {
+                //     level.setBlockAndUpdate(pos, state.cycle(LIT));
+                //     return InteractionResult.CONSUME;
+                // }
             }
         }
         return InteractionResult.FAIL;
+
+        // if (!level.isClientSide) {
+        //     if (state.getValue(MODE)==1) {
+        //         level.setBlockAndUpdate(pos, state.cycle(LIT));
+        //         return InteractionResult.CONSUME;
+        //     }
+        // }
+        // return InteractionResult.FAIL;
     }
 
     private rotype rotmode = rotype.NONE;
-    private ais.update_ais iupdate = (state, level, pos) -> {};
+    private ais.update_ais iupdate = (state, level, pos) -> {
+    };
     private ais.rotation_handler_ais irotation = (x) -> {
         return plane_facing.UP;
     };
-    private ais.shape_handler_ais ishape = (state, getter, pos, context)->{
+    private ais.shape_handler_ais ishape = (state, getter, pos, context) -> {
         return shape;
     };
-    private ais.block_surviveable_handler isurvive = (state, reader, pos) -> {return true;};
+    private ais.block_surviveable_handler isurvive = (state, reader, pos) -> {
+        return true;
+    };
 
     public light setupd(ais.update_ais sam) {// single abstract method
         iupdate = sam;
@@ -151,7 +175,7 @@ public class light extends Block implements lightnonsencery {
     public light setsurv(ais.block_surviveable_handler surv) {
         isurvive = surv;
         return this;
-    } 
+    }
 
     public light setshape(VoxelShape shap) {
         shape = shap;
@@ -176,6 +200,11 @@ public class light extends Block implements lightnonsencery {
         rotmode = rotype.CUSTOM;
         ishape = hand;
 
+        return this;
+    }
+
+    public light setclickitem(Item stack) {
+        clickitem = option.some(stack);
         return this;
     }
 
@@ -250,37 +279,103 @@ public class light extends Block implements lightnonsencery {
         ALL
     }
 
-    public static shape_handler_ais horizontal_up_down_facing_shape(VoxelShape n,VoxelShape e,VoxelShape s,VoxelShape w, VoxelShape un,VoxelShape ue,VoxelShape us,VoxelShape uw) {
-        return (state, getter, pos, context)->{
+    public static shape_handler_ais horizontal_up_down_facing_shape(
+            VoxelShape n,
+            VoxelShape e,
+            VoxelShape s,
+            VoxelShape w,
+            VoxelShape un,
+            VoxelShape ue,
+            VoxelShape us,
+            VoxelShape uw) {
+        return (state, getter, pos, context) -> {
             plane_facing face = state.getValue(FACING);
-            if (face == plane_facing.NORTH) return n;
-            if (face == plane_facing.EAST ) return e;
-            if (face == plane_facing.SOUTH) return s;
-            if (face == plane_facing.WEST ) return w;
+            if (face == plane_facing.NORTH)
+                return n;
+            if (face == plane_facing.EAST)
+                return e;
+            if (face == plane_facing.SOUTH)
+                return s;
+            if (face == plane_facing.WEST)
+                return w;
 
-            if (face == plane_facing.UP_NORTH) return un;
-            if (face == plane_facing.UP_EAST ) return ue;
-            if (face == plane_facing.UP_SOUTH) return us;
-            if (face == plane_facing.UP_WEST ) return uw;
+            if (face == plane_facing.UP_NORTH)
+                return un;
+            if (face == plane_facing.UP_EAST)
+                return ue;
+            if (face == plane_facing.UP_SOUTH)
+                return us;
+            if (face == plane_facing.UP_WEST)
+                return uw;
+
+            return Shapes.block();
+        };
+    }
+
+    public static shape_handler_ais horizontal_shape(
+            VoxelShape n,
+            VoxelShape e,
+            VoxelShape s,
+            VoxelShape w,
+            VoxelShape un,
+            VoxelShape ue,
+            VoxelShape us,
+            VoxelShape uw,
+            VoxelShape dn,
+            VoxelShape de,
+            VoxelShape ds,
+            VoxelShape dw) {
+        return (state, getter, pos, context) -> {
+            plane_facing face = state.getValue(FACING);
+            if (face == plane_facing.NORTH)
+                return n;
+            if (face == plane_facing.EAST)
+                return e;
+            if (face == plane_facing.SOUTH)
+                return s;
+            if (face == plane_facing.WEST)
+                return w;
+
+            if (face == plane_facing.NORTH_UP)
+                return un;
+            if (face == plane_facing.EAST_UP)
+                return ue;
+            if (face == plane_facing.SOUTH_UP)
+                return us;
+            if (face == plane_facing.WEST_UP)
+                return uw;
+
+            if (face == plane_facing.NORTH_DOWN)
+                return dn;
+            if (face == plane_facing.EAST_DOWN)
+                return de;
+            if (face == plane_facing.SOUTH_DOWN)
+                return ds;
+            if (face == plane_facing.WEST_DOWN)
+                return dw;
 
             return Shapes.block();
         };
     }
 
     public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
-      if (smoke_emiter && state.getValue(light.LIT)) {
-         if (rand.nextInt(10) == 0) {
-            world.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 0.5F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.6F, false);
-         }
-
-         if (rand.nextInt(5) == 0) {
-            for(int i = 0; i < rand.nextInt(1) + 1; ++i) {
-               world.addParticle(ParticleTypes.LAVA, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, (double)(rand.nextFloat() / 2.0F), 5.0E-5D, (double)(rand.nextFloat() / 2.0F));
+        if (smoke_emiter && state.getValue(light.LIT)) {
+            if (rand.nextInt(10) == 0) {
+                world.playLocalSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D,
+                        SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 0.5F + rand.nextFloat(),
+                        rand.nextFloat() * 0.7F + 0.6F, false);
             }
-         }
 
-      }
-   }
+            if (rand.nextInt(5) == 0) {
+                for (int i = 0; i < rand.nextInt(1) + 1; ++i) {
+                    world.addParticle(ParticleTypes.LAVA, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D,
+                            (double) pos.getZ() + 0.5D, (double) (rand.nextFloat() / 2.0F), 5.0E-5D,
+                            (double) (rand.nextFloat() / 2.0F));
+                }
+            }
+
+        }
+    }
 }
 
 // .setValue(FLICKER, flickers));

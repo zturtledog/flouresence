@@ -17,8 +17,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 public class sconce_item extends BlockItem {
-    public sconce_item(Block p_40565_, Properties p_40566_) {
+    public final String id;
+    public sconce_item(Block p_40565_, Properties p_40566_, String id) {
         super(p_40565_, p_40566_);
+        this.id = id;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class sconce_item extends BlockItem {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components,
             TooltipFlag p_41424_) {
         if (keybinds.shift_mod != null) {
-            components.add(new TextComponent((new TranslatableComponent("tooltip.fluorescence.sconce")).getString()
+            components.add(new TextComponent((new TranslatableComponent("tooltip.fluorescence."+id)).getString()
                     .replace("<?:1>", keybinds.shift_mod.getKey().getDisplayName().getString())
                     .replace("<?:2>", (new TranslatableComponent("misc.fluorescence.shiftlocal")).getString()))
                     .withStyle(ChatFormatting.GRAY));

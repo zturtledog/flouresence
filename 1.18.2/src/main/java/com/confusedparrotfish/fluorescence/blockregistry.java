@@ -6,9 +6,9 @@ import com.confusedparrotfish.fluorescence.custom.tile.hidden_light;
 import com.confusedparrotfish.fluorescence.dev.nullsafty;
 import com.confusedparrotfish.fluorescence.lib.ais;
 import com.confusedparrotfish.fluorescence.misc.shapes;
-import com.confusedparrotfish.fluorescence.redstone.poweredchain;
 import com.google.common.base.Supplier;
 
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -82,7 +82,6 @@ public class blockregistry {
                         }
                     })));
 
-    @SuppressWarnings("null")
     public static final RegistryObject<Block> PENDANT_LIGHT = registerblock("pendant_light",
             () -> (light.build(light.defaultprops(0, 15)
                     .strength(0.3F).sound(SoundType.GLASS), true, 2)
@@ -102,7 +101,7 @@ public class blockregistry {
                         if (!state.canSurvive(level, pos)) {
                             level.destroyBlock(pos, !false);
                         }
-                    }).setsmokes(true)));
+                    }).setsmokes(true).setclickitem(Items.FLINT_AND_STEEL)));
 
     public static final RegistryObject<Block> BAR_LIGHT = registerblock("bar_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0)
@@ -163,16 +162,93 @@ public class blockregistry {
     public static final RegistryObject<Block> PETER_TUBE_LIGHT = registerblock("peter_tube_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
-                            shapes.peter_tube_light_turn,
                             shapes.peter_tube_light,
                             shapes.peter_tube_light_turn,
                             shapes.peter_tube_light,
+                            shapes.peter_tube_light_turn,
 
-                            shapes.peter_tube_light_turn_up,
                             shapes.peter_tube_light_up,
                             shapes.peter_tube_light_turn_up,
-                            shapes.peter_tube_light_up))
+                            shapes.peter_tube_light_up,
+                            shapes.peter_tube_light_turn_up))
                     .setrothand(ais.horizontal_up_down_facing));
+
+                    public static final RegistryObject<Block> PETER_DOUBLE_LIGHT = registerblock("peter_double_light",
+                    () -> (light.build(light.defaultprops(0, 15), false, 0))
+                            .setshape(light.horizontal_up_down_facing_shape(
+                                    shapes.peter_double_light_turn,
+                                    shapes.peter_double_light,
+                                    shapes.peter_double_light_turn,
+                                    shapes.peter_double_light,
+        
+                                    shapes.peter_double_light_turn_up,
+                                    shapes.peter_double_light_up,
+                                    shapes.peter_double_light_turn_up,
+                                    shapes.peter_double_light_up))
+                            .setrothand(ais.horizontal_up_down_facing));
+                            
+            public static final RegistryObject<Block> PETER_LONG_LIGHT = registerblock("peter_long_light",
+                    () -> (light.build(light.defaultprops(0, 15), false, 0))
+                            .setshape(light.horizontal_up_down_facing_shape(
+                                shapes.peter_wood_light_down,
+                                shapes.peter_wood_light_down_turn,
+                                shapes.peter_wood_light_down,
+                                shapes.peter_wood_light_down_turn,
+    
+                                shapes.peter_wood_light_up,
+                                shapes.peter_wood_light_up_turn,
+                                shapes.peter_wood_light_up,
+                                shapes.peter_wood_light_up_turn))
+                            .setrothand(ais.horizontal_up_down_facing));
+
+                            public static final RegistryObject<Block> PETER_LONG_LIGHT_COVERED = registerblock("peter_long_light_covered",
+                            () -> (light.build(light.defaultprops(0, 15), false, 0))
+                                    .setshape(light.horizontal_up_down_facing_shape(
+                                            shapes.peter_wood_light_down,
+                                            shapes.peter_wood_light_down_turn,
+                                            shapes.peter_wood_light_down,
+                                            shapes.peter_wood_light_down_turn,
+                
+                                            shapes.peter_wood_light_up,
+                                            shapes.peter_wood_light_up_turn,
+                                            shapes.peter_wood_light_up,
+                                            shapes.peter_wood_light_up_turn
+                                            ))
+                                    .setrothand(ais.horizontal_up_down_facing));
+
+                                            public static final RegistryObject<Block> PETER_TROUGH_LIGHT = registerblock("peter_trough_light",
+                                            () -> (light.build(light.defaultprops(0, 15), false, 0))
+                                                    .setshape(light.horizontal_up_down_facing_shape(
+                                                            shapes.peter_tube_light,
+                                                            shapes.peter_tube_light_turn,
+                                                            shapes.peter_tube_light,
+                                                            shapes.peter_tube_light_turn,
+                                
+                                                            shapes.peter_tube_light_up,
+                                                            shapes.peter_tube_light_turn_up,
+                                                            shapes.peter_tube_light_up,
+                                                            shapes.peter_tube_light_turn_up))
+                                                    .setrothand(ais.horizontal_up_down_facing));
+
+                                                    public static final RegistryObject<Block> PETER_WOOD_LIGHT = registerblock("peter_wood_light",
+                                                    () -> (light.build(light.defaultprops(0, 15), false, 0))
+                                                            .setshape(light.horizontal_shape(
+                                                                    shapes.peter_wood_light_north,
+                                                                    shapes.peter_wood_light_east,
+                                                                    shapes.peter_wood_light_south,
+                                                                    shapes.peter_wood_light_west,
+                                        
+                                                                    shapes.peter_wood_light_up,
+                                                                    shapes.peter_wood_light_up_turn,
+                                                                    shapes.peter_wood_light_up,
+                                                                    shapes.peter_wood_light_up_turn,
+
+                                                                    shapes.peter_wood_light_down,
+                                                                    shapes.peter_wood_light_down_turn,
+                                                                    shapes.peter_wood_light_down,
+                                                                    shapes.peter_wood_light_down_turn
+                                                                ))
+                                                            .setrothand(ais.horizontal_multi_facing));
 
     // public static final RegistryObject<Block> POWERED_CHAIN = registerblock("powered_chain",
     //         () -> (new poweredchain(BlockBehaviour.Properties.of(Material.METAL)

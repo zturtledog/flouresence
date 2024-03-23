@@ -10,23 +10,18 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
 import org.slf4j.Logger;
 
@@ -89,6 +84,7 @@ public class Fluorescence {
         ItemBlockRenderTypes.setRenderLayer(blockregistry.TOPPER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(blockregistry.SCONCE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(blockregistry.FIRE_PIT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(blockregistry.PETER_LONG_LIGHT_COVERED.get(), RenderType.translucent());
         // });
 
         // ItemBlockRenderTypes.setRenderLayer(blockregistry.POWERED_CHAIN.get(),
