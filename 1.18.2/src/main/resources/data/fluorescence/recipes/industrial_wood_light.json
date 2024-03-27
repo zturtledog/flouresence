@@ -1,0 +1,22 @@
+{
+    "type":"minecraft:crafting_shaped",
+    "pattern":[
+        " W ",
+        "GRG",
+        " W "
+    ],
+    "key":{
+        "R":{
+            "item":"minecraft:redstone"
+        },
+        "G":{
+            "item":"minecraft:glowstone_dust"
+        },
+        "W":{
+            "tag":"minecraft:planks"
+        }
+    },
+    "result":{
+        "item": "fluorescence:industrial_wood_light"
+    }
+}

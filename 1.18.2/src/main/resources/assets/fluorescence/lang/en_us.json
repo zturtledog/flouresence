@@ -17,13 +17,14 @@
     "block.fluorescence.powered_chain":"Powered Chain",
     "block.fluorescence.drop_light":"Drop Light",
     "block.fluorescence.hidden_light":"Hidden Light",
-    "block.fluorescence.peter_tube_light":"Peter Industrialized Quad Tube Light",
-    "block.fluorescence.peter_double_light":"Peter Double Light",
-    "block.fluorescence.peter_long_light_covered":"Peter Long Light Covered",
-    "block.fluorescence.peter_long_light":"Peter Long Light",
-    "block.fluorescence.peter_trough_light":"Peter Trough Light",
-    "block.fluorescence.peter_wood_light":"Peter Wood Light",
-    "block.fluorescence.peter_grille_light":"Peter Grille Light",
+
+    "block.fluorescence.industrial_tube_light":"Industrial Industrialized Quad Tube Light",
+    "block.fluorescence.industrial_double_light":"Industrial Double Light",
+    "block.fluorescence.industrial_long_light_covered":"Industrial Long Light Covered",
+    "block.fluorescence.industrial_long_light":"Industrial Long Light",
+    "block.fluorescence.industrial_trough_light":"Industrial Trough Light",
+    "block.fluorescence.industrial_wood_light":"Homely Wood Light",
+    "block.fluorescence.industrial_grille_light":"Industrial Grille Light",
 
     "item.fluorescence.wernch":"Wernch",
 

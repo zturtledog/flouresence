@@ -1,0 +1,56 @@
+{
+    "variants":{
+        "facing=north_down": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":180
+        },
+        "facing=north_up": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":180,
+            "x":180
+        },
+        "facing=east_down": { 
+            "y":270,
+            "model": "fluorescence:block/industrial_long_wood_light"
+        },
+        "facing=east_up": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":270,
+            "x":180
+        },
+        "facing=south_down": { "model": "fluorescence:block/industrial_long_wood_light"},
+        "facing=south_up": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "x":180
+        },
+        "facing=west_down": { 
+            "y":90,
+            "model": "fluorescence:block/industrial_long_wood_light"
+        },
+        "facing=west_up": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":90,
+            "x":180
+        },
+        "facing=south": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "x":90
+        },
+        "facing=north": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":180,
+            "x":90
+        },
+
+        "facing=west": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":90,
+            "x":90
+        },
+        "facing=east": { 
+            "model": "fluorescence:block/industrial_long_wood_light",
+            "y":270,
+            "x":90
+        }
+    }
+}

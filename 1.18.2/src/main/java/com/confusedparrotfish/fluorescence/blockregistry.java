@@ -43,7 +43,7 @@ public class blockregistry {
                         return plane_facing.fromdir(x.getClickedFace());
                     })));// .isValidSpawn(Blocks::always)
 
-    public static final RegistryObject<Block> PETER_LAMP = registerblock("peter_lamp",
+    public static final RegistryObject<Block> PETER_LAMP = registerblock("industrial_lamp",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_lamp_turn,
@@ -57,7 +57,7 @@ public class blockregistry {
                             shapes.peter_lamp_up))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_LAMP_COVERED = registerblock("peter_lamp_covered",
+    public static final RegistryObject<Block> PETER_LAMP_COVERED = registerblock("industrial_lamp_covered",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_lamp_turn,
@@ -158,7 +158,7 @@ public class blockregistry {
     public static final RegistryObject<Block> HIDDEN_LIGHT = registerblock_no_item("hidden_light",
             () -> (hidden_light.build(light.defaultprops(1, 15), true, 2)));
 
-    public static final RegistryObject<Block> PETER_TUBE_LIGHT = registerblock("peter_tube_light",
+    public static final RegistryObject<Block> PETER_TUBE_LIGHT = registerblock("industrial_tube_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_tube_light,
@@ -172,7 +172,7 @@ public class blockregistry {
                             shapes.peter_tube_light_turn_up))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_GRILLE_LIGHT = registerblock("peter_grille_light",
+    public static final RegistryObject<Block> PETER_GRILLE_LIGHT = registerblock("industrial_grille_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_tube_light,
@@ -186,7 +186,7 @@ public class blockregistry {
                             shapes.peter_tube_light_turn_up))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_DOUBLE_LIGHT = registerblock("peter_double_light",
+    public static final RegistryObject<Block> PETER_DOUBLE_LIGHT = registerblock("industrial_double_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_double_light_turn,
@@ -200,7 +200,7 @@ public class blockregistry {
                             shapes.peter_double_light_up))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_LONG_LIGHT = registerblock("peter_long_light",
+    public static final RegistryObject<Block> PETER_LONG_LIGHT = registerblock("industrial_long_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_wood_light_down,
@@ -214,7 +214,7 @@ public class blockregistry {
                             shapes.peter_wood_light_up_turn))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_LONG_LIGHT_COVERED = registerblock("peter_long_light_covered",
+    public static final RegistryObject<Block> PETER_LONG_LIGHT_COVERED = registerblock("industrial_long_light_covered",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_wood_light_down,
@@ -228,7 +228,7 @@ public class blockregistry {
                             shapes.peter_wood_light_up_turn))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_TROUGH_LIGHT = registerblock("peter_trough_light",
+    public static final RegistryObject<Block> PETER_TROUGH_LIGHT = registerblock("industrial_trough_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_up_down_facing_shape(
                             shapes.peter_tube_light,
@@ -242,7 +242,7 @@ public class blockregistry {
                             shapes.peter_tube_light_turn_up))
                     .setrothand(ais.horizontal_up_down_facing));
 
-    public static final RegistryObject<Block> PETER_WOOD_LIGHT = registerblock("peter_wood_light",
+    public static final RegistryObject<Block> PETER_WOOD_LIGHT = registerblock("industrial_wood_light",
             () -> (light.build(light.defaultprops(0, 15), false, 0))
                     .setshape(light.horizontal_shape(
                             shapes.peter_wood_light_north,
