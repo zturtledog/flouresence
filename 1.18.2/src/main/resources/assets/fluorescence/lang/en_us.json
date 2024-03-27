@@ -1,9 +1,6 @@
 {
     "itemGroup.Fluorescence":"Fluorescence",
     
-    "block.fluorescence.tiled_light":"Tiled Light",
-    "block.fluorescence.peter_lamp":"Peter Lamp",
-    "block.fluorescence.peter_lamp_covered":"Peter Lamp Covered",
     "block.fluorescence.drip_light":"Drip Light",
     "block.fluorescence.pendant_light":"Pendant Light",
     "block.fluorescence.bar_light":"Bar Light",
@@ -17,8 +14,11 @@
     "block.fluorescence.powered_chain":"Powered Chain",
     "block.fluorescence.drop_light":"Drop Light",
     "block.fluorescence.hidden_light":"Hidden Light",
-
-    "block.fluorescence.industrial_tube_light":"Industrial Industrialized Quad Tube Light",
+    "block.fluorescence.tiled_light":"Tiled Light",
+    
+    "block.fluorescence.industrial_lamp":"Industrial Lamp",
+    "block.fluorescence.industrial_lamp_covered":"Industrial Lamp Covered",
+    "block.fluorescence.industrial_tube_light":"Industrial Perferated Industrialized Quad Tube Light Emmiting Device Also Known As IPIQ'TLED",
     "block.fluorescence.industrial_double_light":"Industrial Double Light",
     "block.fluorescence.industrial_long_light_covered":"Industrial Long Light Covered",
     "block.fluorescence.industrial_long_light":"Industrial Long Light",
